@@ -15459,15 +15459,12 @@ The Mean Absolute Error:  0.1234
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">preds_population</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">selected_countries_index</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For country&quot;</span><span class="p">,</span> <span class="n">country_codes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="n">last_10_deltas</span> <span class="o">=</span> <span class="n">population_deltas</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
-    <span class="n">delta</span> <span class="o">=</span> <span class="n">lr_population</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">last_10_deltas</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Delta 2016-2017:&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">delta</span><span class="p">))</span>
-    <span class="n">value_2016</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">population</span><span class="p">[</span><span class="n">country_codes</span><span class="p">[</span><span class="n">i</span><span class="p">]])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value 2016:&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">value_2016</span><span class="p">))</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lr_population</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">last_10_deltas</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">value_2016</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">population</span><span class="p">[</span><span class="n">country_codes</span><span class="p">[</span><span class="n">i</span><span class="p">]])[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">pred_2017</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value_2016</span> <span class="o">+</span> <span class="n">delta</span><span class="p">)</span>
     <span class="n">preds_population</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred_2017</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted Value 2017:&quot;</span><span class="p">,</span> <span class="n">pred_2017</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For country&quot;</span><span class="p">,</span> <span class="n">country_codes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="s2">&quot;Delta 2016-2017:&quot;</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="s2">&quot;Value 2016:&quot;</span><span class="p">,</span> <span class="n">value_2016</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="s2">&quot;Predicted Value 2017:&quot;</span><span class="p">,</span> <span class="n">pred_2017</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -15490,90 +15487,25 @@ The Mean Absolute Error:  0.1234
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>For country LUX
-Delta 2016-2017: 8175
-Value 2016: 582014
-Predicted Value 2017: 590189
+<pre>For country LUX | Delta 2016-2017: 8175 | Value 2016: 582014 | Predicted Value 2017: 590189
 ---------------------
-For country EST
-Delta 2016-2017: -695
-Value 2016: 1315790
-Predicted Value 2017: 1315094
+For country EST | Delta 2016-2017: -695 | Value 2016: 1315790 | Predicted Value 2017: 1315095
 ---------------------
-For country CZE
-Delta 2016-2017: 43991
-Value 2016: 10566332
-Predicted Value 2017: 10610323
+For country CZE | Delta 2016-2017: 43991 | Value 2016: 10566332 | Predicted Value 2017: 10610323
 ---------------------
-For country ZMB
-Delta 2016-2017: 486001
-Value 2016: 16591390
-Predicted Value 2017: 17077391
+For country ZMB | Delta 2016-2017: 486001 | Value 2016: 16591390 | Predicted Value 2017: 17077391
 ---------------------
-For country USA
-Delta 2016-2017: 2309742
-Value 2016: 323127513
-Predicted Value 2017: 325437255
+For country USA | Delta 2016-2017: 2309742 | Value 2016: 323127513 | Predicted Value 2017: 325437255
 ---------------------
-For country NPL
-Delta 2016-2017: 307500
-Value 2016: 28982771
-Predicted Value 2017: 29290271
+For country NPL | Delta 2016-2017: 307500 | Value 2016: 28982771 | Predicted Value 2017: 29290271
 ---------------------
-For country SAU
-Delta 2016-2017: 643722
-Value 2016: 32275687
-Predicted Value 2017: 32919409
+For country SAU | Delta 2016-2017: 643722 | Value 2016: 32275687 | Predicted Value 2017: 32919409
 ---------------------
-For country MRT
-Delta 2016-2017: 111382
-Value 2016: 4301018
-Predicted Value 2017: 4412400
+For country MRT | Delta 2016-2017: 111382 | Value 2016: 4301018 | Predicted Value 2017: 4412400
 ---------------------
-For country PNG
-Delta 2016-2017: 159657
-Value 2016: 8084991
-Predicted Value 2017: 8244648
+For country PNG | Delta 2016-2017: 159657 | Value 2016: 8084991 | Predicted Value 2017: 8244648
 ---------------------
-For country ZAF
-Delta 2016-2017: 672964
-Value 2016: 56015473
-Predicted Value 2017: 56688437
----------------------
-For country ZMB
-Delta 2016-2017: 486001
-Value 2016: 16591390
-Predicted Value 2017: 17077391
----------------------
-For country USA
-Delta 2016-2017: 2309742
-Value 2016: 323127513
-Predicted Value 2017: 325437255
----------------------
-For country NPL
-Delta 2016-2017: 307500
-Value 2016: 28982771
-Predicted Value 2017: 29290271
----------------------
-For country SAU
-Delta 2016-2017: 643722
-Value 2016: 32275687
-Predicted Value 2017: 32919409
----------------------
-For country MRT
-Delta 2016-2017: 111382
-Value 2016: 4301018
-Predicted Value 2017: 4412400
----------------------
-For country PNG
-Delta 2016-2017: 159657
-Value 2016: 8084991
-Predicted Value 2017: 8244648
----------------------
-For country ZAF
-Delta 2016-2017: 672964
-Value 2016: 56015473
-Predicted Value 2017: 56688437
+For country ZAF | Delta 2016-2017: 672964 | Value 2016: 56015473 | Predicted Value 2017: 56688437
 ---------------------
 </pre>
 </div>
@@ -15642,15 +15574,12 @@ Predicted Value 2017: 56688437
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">preds_fertility</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">selected_countries_index</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For country&quot;</span><span class="p">,</span> <span class="n">country_codes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="n">last_10_deltas</span> <span class="o">=</span> <span class="n">fertility_deltas</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
-    <span class="n">delta</span> <span class="o">=</span> <span class="n">rf_fertility</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">last_10_deltas</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Delta 2016-2017:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">rf_fertility</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">last_10_deltas</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">value_2016</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fertility</span><span class="p">[</span><span class="n">country_codes</span><span class="p">[</span><span class="n">i</span><span class="p">]])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value 2016:&quot;</span><span class="p">,</span> <span class="n">value_2016</span><span class="p">)</span>
     <span class="n">pred_2017</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">value_2016</span> <span class="o">+</span> <span class="n">delta</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">preds_fertility</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred_2017</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted Value 2017:&quot;</span><span class="p">,</span> <span class="n">pred_2017</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For country&quot;</span><span class="p">,</span> <span class="n">country_codes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="s2">&quot;Delta 2016-2017:&quot;</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="s2">&quot;Value 2016:&quot;</span><span class="p">,</span> <span class="n">value_2016</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="s2">&quot;Predicted Value 2017:&quot;</span><span class="p">,</span> <span class="n">pred_2017</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -15673,64 +15602,25 @@ Predicted Value 2017: 56688437
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>For country LUX
-Delta 2016-2017: -0.02
-Value 2016: 1.47
-Predicted Value 2017: 1.45
+<pre>For country LUX | Delta 2016-2017: -0.02 | Value 2016: 1.47 | Predicted Value 2017: 1.45
 ---------------------
-For country EST
-Delta 2016-2017: -0.01
-Value 2016: 1.58
-Predicted Value 2017: 1.57
+For country EST | Delta 2016-2017: -0.01 | Value 2016: 1.58 | Predicted Value 2017: 1.57
 ---------------------
-For country CZE
-Delta 2016-2017: -0.01
-Value 2016: 1.57
-Predicted Value 2017: 1.56
+For country CZE | Delta 2016-2017: -0.01 | Value 2016: 1.57 | Predicted Value 2017: 1.56
 ---------------------
-For country ZMB
-Delta 2016-2017: -0.05
-Value 2016: 4.981
-Predicted Value 2017: 4.93
+For country ZMB | Delta 2016-2017: -0.05 | Value 2016: 4.981 | Predicted Value 2017: 4.93
 ---------------------
-For country USA
-Delta 2016-2017: -0.04
-Value 2016: 1.8
-Predicted Value 2017: 1.76
+For country USA | Delta 2016-2017: -0.04 | Value 2016: 1.8 | Predicted Value 2017: 1.76
 ---------------------
-For country NPL
-Delta 2016-2017: -0.05
-Value 2016: 2.118
-Predicted Value 2017: 2.07
+For country NPL | Delta 2016-2017: -0.05 | Value 2016: 2.118 | Predicted Value 2017: 2.07
 ---------------------
-For country SAU
-Delta 2016-2017: -0.05
-Value 2016: 2.532
-Predicted Value 2017: 2.49
+For country SAU | Delta 2016-2017: -0.05 | Value 2016: 2.532 | Predicted Value 2017: 2.48
 ---------------------
-For country MRT
-Delta 2016-2017: -0.05
-Value 2016: 4.674
-Predicted Value 2017: 4.63
+For country MRT | Delta 2016-2017: -0.05 | Value 2016: 4.674 | Predicted Value 2017: 4.62
 ---------------------
-For country PNG
-Delta 2016-2017: -0.05
-Value 2016: 3.658
-Predicted Value 2017: 3.61
+For country PNG | Delta 2016-2017: -0.05 | Value 2016: 3.658 | Predicted Value 2017: 3.61
 ---------------------
-For country ZAF
-Delta 2016-2017: -0.03
-Value 2016: 2.458
-Predicted Value 2017: 2.43
----------------------
- -0.05
-Value 2016: 3.658
-Predicted Value 2017: 3.61
----------------------
-For country ZAF
-Delta 2016-2017: -0.03
-Value 2016: 2.458
-Predicted Value 2017: 2.43
+For country ZAF | Delta 2016-2017: -0.03 | Value 2016: 2.458 | Predicted Value 2017: 2.43
 ---------------------
 </pre>
 </div>
@@ -15790,15 +15680,12 @@ Predicted Value 2017: 2.43
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">preds_life_expect</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">selected_countries_index</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For country&quot;</span><span class="p">,</span> <span class="n">country_codes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="n">last_6_deltas</span> <span class="o">=</span> <span class="n">life_expectancy_deltas</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="o">-</span><span class="mi">6</span><span class="p">:]</span>
-    <span class="n">delta</span> <span class="o">=</span> <span class="n">rf_life_expectancy</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">last_6_deltas</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Delta 2016-2017:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-    <span class="n">value_2016</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">life_expectancy</span><span class="p">[</span><span class="n">country_codes</span><span class="p">[</span><span class="n">i</span><span class="p">]])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Value 2016:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">value_2016</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">rf_life_expectancy</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">last_6_deltas</span><span class="p">])[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">value_2016</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">life_expectancy</span><span class="p">[</span><span class="n">country_codes</span><span class="p">[</span><span class="n">i</span><span class="p">]])[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">pred_2017</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">value_2016</span> <span class="o">+</span> <span class="n">delta</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">preds_life_expect</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred_2017</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted Value 2017:&quot;</span><span class="p">,</span> <span class="n">pred_2017</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For country&quot;</span><span class="p">,</span> <span class="n">country_codes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="s2">&quot;Delta 2016-2017:&quot;</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="s2">&quot;Value 2016:&quot;</span><span class="p">,</span> <span class="n">value_2016</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="s2">&quot;Predicted Value 2017:&quot;</span><span class="p">,</span> <span class="n">pred_2017</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -15821,55 +15708,25 @@ Predicted Value 2017: 2.43
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>For country LUX
-Delta 2016-2017: 0.1
-Value 2016: 82.29
-Predicted Value 2017: 82.39
+<pre>For country LUX | Delta 2016-2017: 0.1 | Value 2016: 82.29 | Predicted Value 2017: 82.39
 ---------------------
-For country EST
-Delta 2016-2017: -0.06
-Value 2016: 77.74
-Predicted Value 2017: 77.68
+For country EST | Delta 2016-2017: -0.06 | Value 2016: 77.74 | Predicted Value 2017: 77.68
 ---------------------
-For country CZE
-Delta 2016-2017: -0.1
-Value 2016: 78.33
-Predicted Value 2017: 78.23
+For country CZE | Delta 2016-2017: -0.1 | Value 2016: 78.33 | Predicted Value 2017: 78.23
 ---------------------
-For country ZMB
-Delta 2016-2017: 0.48
-Value 2016: 61.87
-Predicted Value 2017: 62.36
+For country ZMB | Delta 2016-2017: 0.48 | Value 2016: 61.87 | Predicted Value 2017: 62.35
 ---------------------
-For country USA
-Delta 2016-2017: 0.09
-Value 2016: 78.69
-Predicted Value 2017: 78.78
+For country USA | Delta 2016-2017: 0.09 | Value 2016: 78.69 | Predicted Value 2017: 78.78
 ---------------------
-For country NPL
-Delta 2016-2017: 0.36
-Value 2016: 70.25
-Predicted Value 2017: 70.61
+For country NPL | Delta 2016-2017: 0.36 | Value 2016: 70.25 | Predicted Value 2017: 70.61
 ---------------------
-For country SAU
-Delta 2016-2017: 0.17
-Value 2016: 74.56
-Predicted Value 2017: 74.73
+For country SAU | Delta 2016-2017: 0.17 | Value 2016: 74.56 | Predicted Value 2017: 74.73
 ---------------------
-For country MRT
-Delta 2016-2017: 0.16
-Value 2016: 63.24
-Predicted Value 2017: 63.39
+For country MRT | Delta 2016-2017: 0.16 | Value 2016: 63.24 | Predicted Value 2017: 63.4
 ---------------------
-For country PNG
-Delta 2016-2017: 0.18
-Value 2016: 65.54
-Predicted Value 2017: 65.72
+For country PNG | Delta 2016-2017: 0.18 | Value 2016: 65.54 | Predicted Value 2017: 65.72
 ---------------------
-For country ZAF
-Delta 2016-2017: 0.79
-Value 2016: 62.77
-Predicted Value 2017: 63.57
+For country ZAF | Delta 2016-2017: 0.79 | Value 2016: 62.77 | Predicted Value 2017: 63.56
 ---------------------
 </pre>
 </div>
